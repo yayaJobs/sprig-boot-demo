@@ -1,0 +1,19 @@
+group = 'com.yaya.springBoot'
+version = '0.0.1-SNAPSHOT'
+
+subprojects {
+    group = 'com.yaya.springBoot'
+    version = '0.0.1-SNAPSHOT'
+
+    buildscript {
+        ext {
+            springBootVersion = '2.1.2.RELEASE'
+            springVersion = '5.1.4.RELEASE'
+            springCloudVersion = 'Greenwich'
+        }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+}
