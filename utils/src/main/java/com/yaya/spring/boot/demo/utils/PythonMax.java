@@ -118,6 +118,15 @@ public class PythonMax {
         Function<Integer, Integer> abs = s -> Math.abs(s);
         logger.info("" + max(abs, -1, 0, -8, 7));
 
-
+        List<Object> test = new ArrayList<>();
+        test.add(0);
+        test.add(2);
+        test.add(8);
+        test.add(7);
+        logger.info("" + max((Collection) test));
+        test.clear();
+        test.add(0);
+        logger.info("" + max((Collection) test));
+        test.clear();
     }
 }
