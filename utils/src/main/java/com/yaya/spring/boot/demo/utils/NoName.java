@@ -1,60 +1,49 @@
 package com.yaya.spring.boot.demo.utils;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class NoName {
 
+    /**
+     * 代码是对两个字符串进行比较，比较规则为字符串组成字符的种类和数目是否一致。
+     * 若构成两个字符串的字符种类及各个种类出现的数目都一致，则返回true，否则返回false。
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     public static Boolean noName(String a, String b) {
-        System.out.println("noName:a=" + a + ";b=" + b);
         if (Objects.isNull(a) || Objects.isNull(b)) {
-            System.err.println("noName 无效请求参数");
+            System.err.println("传入参数异常，存在null");
             return Boolean.FALSE;
         }
         if (a.length() != b.length()) {
             return Boolean.FALSE;
         }
-        for (int x = 0; x < b.length(); x++) {
-            if (a.charAt(0) == b.charAt(x)) {
-                return noName(utilityFunction(a, 0), utilityFunction(b, x));
-            }
+        String sortA = sortString(a);
+        String sortB = sortString(b);
+        if (sortA == null || !sortA.equals(sortB)) {
+            return Boolean.FALSE;
         }
-        if (b.length() == 0) {
-            return Boolean.TRUE;
-        }
-        return Boolean.FALSE;
+        return Boolean.TRUE;
+
     }
 
-    public static String utilityFunction(String s, int j) {
-        if (Objects.isNull(s)) {
-            System.err.println("utilityFunction 无效请求参数");
+    /**
+     * 进行字符串内容默认排序
+     *
+     * @param a
+     * @return
+     */
+    public static String sortString(String a) {
+        if (Objects.isNull(a)) {
+            System.err.println("传入参数为null");
             return null;
         }
-        char[] ret = new char[s.length() - 1];
-        int d = 0;
-        for (int k = 0; k < s.length(); k++) {
-            if (k == j) {
-                d = 1;
-            } else {
-                ret[k - d] = s.charAt(k);
-            }
-        }
-        return new String(ret);
+        a.chars().collect()
+        char[] chars = a.toCharArray();
+        Arrays.sort(chars);
+        return new String(chars);
     }
-
-    public static void main(String args[]) {
-//        System.out.println(noName(null, "aaaaaa"));
-//        System.out.println(noName("aaaaaa", null));
-//        String a = "哈逼 test 王振亚";
-//        System.out.println("utilityFunction: a =" + a);
-//        for (int i = 0; i < a.length(); i++) {
-//            System.out.print("utilityFunction: i=" + i);
-//            System.out.println(" ;result=" + utilityFunction(a, i));
-//        }
-
-        String a = "aabc";
-        String b = "acba";
-        System.out.println(noName(a, b));
-    }
-
-
 }
