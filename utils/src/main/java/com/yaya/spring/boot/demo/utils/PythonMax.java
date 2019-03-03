@@ -2,8 +2,6 @@ package com.yaya.spring.boot.demo.utils;
 
 import java.util.*;
 import java.util.function.Function;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class PythonMax {
 
@@ -101,32 +99,13 @@ public class PythonMax {
         return max(Arrays.asList(array));
     }
 
+    /**
+     * 获取字符串中最大字符
+     *
+     * @param string 字符串
+     * @return 最大字符
+     */
     public static char max(String string) {
         return (char) string.chars().max().getAsInt();
-    }
-
-    public static void main(String args[]) {
-        Logger logger = Logger.getLogger("com.yaya.spring.boot.demo.utils.PythonMax");
-        logger.setLevel(Level.ALL);
-        // logger.info("" + max(1));
-        logger.info("" + max(1, 2));
-        logger.info("" + max(1, 2, 3));
-        logger.info("" + max("1234"));
-        //logger.info(max(1, 2, 3, '3'));
-        logger.info(max("ab", "ac", "ad"));
-        logger.info("" + max(-1, 0));
-        Function<Integer, Integer> abs = s -> Math.abs(s);
-        logger.info("" + max(abs, -1, 0, -8, 7));
-
-        List<Object> test = new ArrayList<>();
-        test.add(0);
-        test.add(2);
-        test.add(8);
-        test.add(7);
-        logger.info("" + max((Collection) test));
-        test.clear();
-        test.add(0);
-        logger.info("" + max((Collection) test));
-        test.clear();
     }
 }
