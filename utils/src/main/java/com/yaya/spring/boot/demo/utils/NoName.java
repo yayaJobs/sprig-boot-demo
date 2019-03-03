@@ -41,7 +41,6 @@ public class NoName {
             System.err.println("传入参数为null");
             return null;
         }
-        a.chars().collect()
         char[] chars = a.toCharArray();
         Arrays.sort(chars);
         return new String(chars);
